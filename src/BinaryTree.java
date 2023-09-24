@@ -5,26 +5,45 @@ public class BinaryTree {
         this.root = null;
     }
 
+    public BinaryNode getRoot() {
+        return this.root;
+    }
+
     public void add(Integer key, Integer value) { // Non recursive add method
 
         BinaryNode currentPosition = root;
-        while (true) {
-            if (currentPosition == null) {
-                currentPosition = new BinaryNode(key, value);
-            } else {
+
+        if (root == null) {
+            root = new BinaryNode(key, value);
+            return;
+        } 
+        else {
+            while (true) {
                 if (currentPosition.getKey() == key) {
                     currentPosition.setValue(value);
                     return;
                 } else {
-                    if (currentPosition.getKey() < key) {
-                        currentPosition = currentPosition.getLeftBinaryNode();
+                    if (currentPosition.getKey() > key) {
+                        if (currentPosition.getLeftBinaryNode() == null) {
+                            currentPosition.setLeftBinaryNode(new BinaryNode(key, value));
+                            return;
+                        } else {
+                            currentPosition = currentPosition.getLeftBinaryNode();
+                        }
+
                     } else {
-                        currentPosition = currentPosition.getLeftBinaryNode();
+                        if (currentPosition.getRightBinaryNode() == null) {
+                            currentPosition.setRightBinaryNode(new BinaryNode(key, value));
+                            return;
+                        } else {
+                            currentPosition = currentPosition.getRightBinaryNode();
+                        }
                     }
 
                 }
             }
         }
+
     }
 
     public void add2(Integer key, Integer value) { // Recursive add method
