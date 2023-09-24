@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 public class BinaryTree {
     BinaryNode root;
 
@@ -9,6 +11,10 @@ public class BinaryTree {
         return this.root;
     }
 
+    public Iterator<Integer> iterator() {
+        return new TreeIterator();
+    }
+
     public void add(Integer key, Integer value) { // Non recursive add method
 
         BinaryNode currentPosition = root;
@@ -16,8 +22,7 @@ public class BinaryTree {
         if (root == null) {
             root = new BinaryNode(key, value);
             return;
-        } 
-        else {
+        } else {
             while (true) {
                 if (currentPosition.getKey() == key) {
                     currentPosition.setValue(value);
