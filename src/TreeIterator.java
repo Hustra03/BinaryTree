@@ -1,6 +1,5 @@
 import java.util.Stack;
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 public class TreeIterator implements Iterator<Integer> {
     private BinaryNode next;
@@ -9,7 +8,8 @@ public class TreeIterator implements Iterator<Integer> {
     public TreeIterator(BinaryNode root) {
 
         this.next = root;
-        this.stack=new Stack<BinaryNode>();
+        this.stack = new Stack<BinaryNode>();
+        stack.push(next);
         while (next.getLeftBinaryNode() != null) {
             stack.push(next);
             next = next.getLeftBinaryNode();
@@ -18,30 +18,29 @@ public class TreeIterator implements Iterator<Integer> {
 
     @Override
     public boolean hasNext() {
-        if (next != null) {
-            return true;
+        if (stack.empty()) {
+            return false;
         }
-        return false;
+        return true;
     }
 
     @Override
     public Integer next() {// Not done
 
-        if (stack.empty() != false) {
+        if (stack.empty() == false) {
+            next = stack.pop();
+            Integer Integer = next.getValue();
             if (next.getRightBinaryNode() != null) {
-                stack.push(next);
                 next = next.getRightBinaryNode();
                 while (next.getLeftBinaryNode() != null) {
-                    stack.push(next.getLeftBinaryNode());
+                    stack.push(next);
                     next = next.getLeftBinaryNode();
                 }
             }
-            Integer Integer = next.getValue();
-
             return Integer;
+        } else {
+            return null;
         }
-        else
-        {throw new NoSuchElementException();}
     }
 
     @Override
