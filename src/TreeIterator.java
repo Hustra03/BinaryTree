@@ -6,39 +6,41 @@ public class TreeIterator implements Iterator<Integer> {
     private Stack<BinaryNode> stack;
 
     public TreeIterator() {
-
+        while (next.getLeftBinaryNode() != null) {
+            stack.push(next);
+            next = next.getLeftBinaryNode();
+        }
     }
 
     @Override
     public boolean hasNext() {
-
+        if (next != null) {
+            return true;
+        }
         return false;
     }
 
     @Override
-    public Integer next() {//Not done
+    public Integer next() {// Not done
 
-        Integer Integer = next.getValue();
-        this.next = stack.pop();
-        while (true) {
+        if (stack.empty() != false) {
 
-            if (next.getLeftBinaryNode() != null) {
-                stack.push(next);
-                next = next.getLeftBinaryNode();
-                continue;
-
-            } else {
-                if (next.getRightBinaryNode() != null) {
-                    stack.push(next);
-                    next = next.getRightBinaryNode();
-                    continue;
-                } else {
-                    break;
+            BinaryNode newNext = stack.pop();
+            if (newNext.getRightBinaryNode() != null) {
+                stack.push(newNext);
+                newNext = newNext.getRightBinaryNode();
+                while (newNext.getLeftBinaryNode() != null) {
+                    stack.push(newNext.getLeftBinaryNode());
+                    newNext = newNext.getLeftBinaryNode();
                 }
+                next = newNext;
             }
-        }
+            Integer Integer = next.getValue();
 
-        return Integer;
+            return Integer;
+        }
+        this.next = null;
+        return null;
     }
 
     @Override

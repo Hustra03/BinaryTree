@@ -52,25 +52,39 @@ public class BinaryTree {
     }
 
     public void add2(Integer key, Integer value) { // Recursive add method
+        if (root == null) {
+            root = new BinaryNode(key, value);
+            return;
+        }
         addRecursive(key, value, this.root);
     }
 
     public void addRecursive(Integer key, Integer value, BinaryNode currentPosition) {
-        if (currentPosition == null) {
-            currentPosition = new BinaryNode(key, value);
+
+        if (currentPosition.getKey() == key) {
+            currentPosition.setValue(value);
+            return;
         } else {
-            if (currentPosition.getKey() == key) {
-                currentPosition.setValue(value);
-                return;
-            } else {
-                if (currentPosition.getKey() < key) {
+            if (currentPosition.getKey() > key) {
+                if (currentPosition.getLeftBinaryNode() == null) {
+                    currentPosition.setLeftBinaryNode(new BinaryNode(key, value));
+                    return;
+                } else {
                     addRecursive(key, value, currentPosition.getLeftBinaryNode());
+                }
+
+            } else {
+                if (currentPosition.getRightBinaryNode() == null) {
+                    currentPosition.setRightBinaryNode(new BinaryNode(key, value));
+                    return;
                 } else {
                     addRecursive(key, value, currentPosition.getRightBinaryNode());
                 }
 
             }
+
         }
+
     }
 
     public Integer lookUp(Integer key) { // Non recursive look up
@@ -79,10 +93,10 @@ public class BinaryTree {
             if (currentPosition.getKey() == key) {
                 return currentPosition.getValue();
             } else {
-                if (currentPosition.getKey() < key) {
+                if (currentPosition.getKey() > key) {
                     currentPosition = currentPosition.getLeftBinaryNode();
                 } else {
-                    currentPosition = currentPosition.getLeftBinaryNode();
+                    currentPosition = currentPosition.getRightBinaryNode();
                 }
             }
         }
@@ -100,15 +114,15 @@ public class BinaryTree {
             if (currentPosition.getKey() == key) {
                 return currentPosition.getValue();
             } else {
-                if (currentPosition.getKey() < key) {
-                    recursiveLookUp(key, currentPosition.getLeftBinaryNode());
+                if (currentPosition.getKey() > key) {
+                    return recursiveLookUp(key, currentPosition.getLeftBinaryNode());
                 } else {
-                    recursiveLookUp(key, currentPosition.getRightBinaryNode());
+                    return recursiveLookUp(key, currentPosition.getRightBinaryNode());
                 }
-
             }
         }
         return null;
 
     }
+
 }
