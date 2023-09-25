@@ -1,6 +1,6 @@
 import java.util.Iterator;
 
-public class BinaryTree {
+public class BinaryTree implements Iterable<Integer>{
     BinaryNode root;
 
     public BinaryTree() {
@@ -12,7 +12,7 @@ public class BinaryTree {
     }
 
     public Iterator<Integer> iterator() {
-        return new TreeIterator();
+        return new TreeIterator(this.root);
     }
 
     public void add(Integer key, Integer value) { // Non recursive add method

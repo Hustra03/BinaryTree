@@ -10,8 +10,8 @@ public class App {
 
         tree.add(2, 1);
         tree.add(10, 13);
-        tree.add2(1, 1);
-        tree.add2(6, 23);
+        tree.add(1, 1);
+        tree.add(6, 23);
         tree.add(4, 1);
 
         tree.getRoot().print();
@@ -19,6 +19,9 @@ public class App {
         for (int i = 0; i <= 10; i++) {
             System.out.println("Value of Key " + i + " in tree 1 :" + tree.lookUp(i));
             System.out.println("");
+        }
+        for (int i : tree) {
+            System.out.println(i);
         }
     }
 }
