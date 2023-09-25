@@ -5,7 +5,6 @@ public class App {
 
     public static void BinaryTreeTest() {
         BinaryTree tree = new BinaryTree();
-        BinaryTree tree2 = new BinaryTree();
 
         tree.add(0, 1);
 
@@ -15,15 +14,7 @@ public class App {
         tree.add(6, 23);
         tree.add(4, 1);
 
-        tree2.add2(0, 1);
-        tree2.add2(2, 1);
-        tree2.add2(10, 13);
-        tree2.add2(1, 1);
-        tree2.add2(6, 23);
-        tree2.add2(4, 1);
-
         tree.getRoot().print();
-        tree2.getRoot().print();
 
         for (int i = 0; i <= 10; i++) {
             System.out.println("Value of Key " + i + " in tree 1 :" + tree.lookUp(i));
