@@ -32,9 +32,10 @@ public class TreeIterator implements Iterator<Integer> {
             Integer Integer = next.getValue();
             if (next.getRightBinaryNode() != null) {
                 next = next.getRightBinaryNode();
+                stack.push(next);
                 while (next.getLeftBinaryNode() != null) {
-                    stack.push(next);
                     next = next.getLeftBinaryNode();
+                    stack.push(next);
                 }
             }
             return Integer;

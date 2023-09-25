@@ -14,6 +14,11 @@ public class App {
         tree.add(6, 6);
         tree.add(4, 4);
 
+
+                tree.add(12, 12);
+        tree.add(13, 13);
+        tree.add(5, 5);
+
         tree.getRoot().print();
 
         for (int i = 0; i <= 10; i++) {
