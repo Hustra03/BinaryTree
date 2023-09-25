@@ -1,6 +1,6 @@
 import java.util.Iterator;
 
-public class BinaryTree implements Iterable<Integer>{
+public class BinaryTree implements Iterable<Integer> {
     BinaryNode root;
 
     public BinaryTree() {
@@ -59,7 +59,7 @@ public class BinaryTree implements Iterable<Integer>{
         addRecursive(key, value, this.root);
     }
 
-    public void addRecursive(Integer key, Integer value, BinaryNode currentPosition) {
+    private void addRecursive(Integer key, Integer value, BinaryNode currentPosition) {
 
         if (currentPosition.getKey() == key) {
             currentPosition.setValue(value);
@@ -108,7 +108,7 @@ public class BinaryTree implements Iterable<Integer>{
         return recursiveLookUp(key, root);
     }
 
-    public Integer recursiveLookUp(Integer key, BinaryNode currentPosition) {
+    private Integer recursiveLookUp(Integer key, BinaryNode currentPosition) {
 
         if (currentPosition != null) {
             if (currentPosition.getKey() == key) {

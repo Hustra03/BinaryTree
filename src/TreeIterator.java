@@ -6,7 +6,6 @@ public class TreeIterator implements Iterator<Integer> {
     private Stack<BinaryNode> stack;
 
     public TreeIterator(BinaryNode root) {
-
         this.next = root;
         this.stack = new Stack<BinaryNode>();
         stack.push(next);

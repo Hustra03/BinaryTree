@@ -14,8 +14,7 @@ public class App {
         tree.add(6, 6);
         tree.add(4, 4);
 
-
-                tree.add(12, 12);
+        tree.add(12, 12);
         tree.add(13, 13);
         tree.add(5, 5);
 
