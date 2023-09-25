@@ -18,7 +18,6 @@ public class App {
 
         for (int i = 0; i <= 10; i++) {
             System.out.println("Value of Key " + i + " in tree 1 :" + tree.lookUp(i));
-            System.out.println("Value of Key " + i + " in tree 2 :" + tree.lookUp2(i));
             System.out.println("");
         }
     }
