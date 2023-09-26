@@ -1,5 +1,3 @@
-import java.util.Iterator;
-
 public class BinaryTree implements Iterable<Integer> {
     BinaryNode root;
 
@@ -11,7 +9,7 @@ public class BinaryTree implements Iterable<Integer> {
         return this.root;
     }
 
-    public Iterator<Integer> iterator() {
+    public TreeIterator iterator() {
         return new TreeIterator(this.root);
     }
 

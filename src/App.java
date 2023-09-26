@@ -27,5 +27,18 @@ public class App {
         for (int i : tree) {
             System.out.println(i);
         }
+        TreeIterator iter =  tree.iterator();
+        Integer one = iter.next();
+        Integer two = iter.next();
+        Integer three = iter.next();
+    
+        System.out.println("one: " + one + " two: " + two + " three: " + three);
+        tree.add(4, 13);//Changes in the tree will affect the iterator, depending on where in the tree the value is located
+        one = iter.next();
+        two = iter.next();
+        three = iter.next();
+        System.out.println("one: " + one + " two: " + two + " three: " + three);
+
+
     }
 }
