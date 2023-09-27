@@ -24,7 +24,7 @@ public class TreeIterator implements Iterator<Integer> {
     }
 
     @Override
-    public Integer next() {// Not done
+    public Integer next() {
 
         if (stack.empty() == false) {
             next = stack.pop();
