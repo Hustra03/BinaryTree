@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        //BinaryTreeTest();
+        // BinaryTreeTest();
         BinaryTreeLookUpBenchmark();
     }
 
@@ -21,7 +21,6 @@ public class App {
         tree.add(13, 13);
         tree.add(5, 5);
 
-
         for (int i : tree) {
             System.out.println(i);
         }
@@ -31,18 +30,19 @@ public class App {
     public static void BinaryTreeLookUpBenchmark() {
 
         Random rnd = new Random();
-        int sizes[] = new int[] { 32,64,128,256,512,1024 };
+        int sizes[] = new int[] { 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192 ,8192*2};
         long minimumLookUp[] = new long[sizes.length];
         long minimumBinary[] = new long[sizes.length];
         for (int i = 0; i < minimumLookUp.length; i++) {
             minimumLookUp[i] = Long.MAX_VALUE;
             minimumBinary[i] = Long.MAX_VALUE;
         }
+        int numberOfRuns = 25000;
         int numberOfAttempts = 1000;
         long t0;
         long t1;
         for (int h = 0; h < sizes.length; h++) {
-            for (int x = 0; x < numberOfAttempts; x++) {
+            for (int x = 0; x < numberOfRuns; x++) {
 
                 int[] array = sorted(sizes[h]);
                 int[] key = keyArray(numberOfAttempts);
@@ -56,10 +56,10 @@ public class App {
                 if (minimumBinary[h] > t1) {
                     minimumBinary[h] = t1;
                 }
-                
+
                 BinaryTree tree = new BinaryTree();
                 for (int j = 0; j < array.length; j++) {
-                    int i = rnd.nextInt(array.length-1);
+                    int i = rnd.nextInt(array.length - 1);
                     tree.add2(array[i], array[i]);
                 }
 
@@ -70,6 +70,7 @@ public class App {
                 }
 
                 t1 = System.nanoTime() - t0;
+
                 if (minimumLookUp[h] > t1) {
                     minimumLookUp[h] = t1;
                 }
