@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        // BinaryTreeTest();
+        //BinaryTreeTest();
         BinaryTreeLookUpBenchmark();
     }
 
@@ -21,34 +21,17 @@ public class App {
         tree.add(13, 13);
         tree.add(5, 5);
 
-        tree.getRoot().print();
 
-        for (int i = 0; i <= 10; i++) {
-            System.out.println("Value of Key " + i + " in tree 1 :" + tree.lookUp(i));
-            System.out.println("");
-        }
         for (int i : tree) {
             System.out.println(i);
         }
-        TreeIterator iter = tree.iterator();
-        Integer one = iter.next();
-        Integer two = iter.next();
-        Integer three = iter.next();
-
-        System.out.println("one: " + one + " two: " + two + " three: " + three);
-        tree.add(4, 13);// Changes in the tree will affect the iterator, depending on where in the tree
-                        // the value is located
-        one = iter.next();
-        two = iter.next();
-        three = iter.next();
-        System.out.println("one: " + one + " two: " + two + " three: " + three);
 
     }
 
     public static void BinaryTreeLookUpBenchmark() {
 
         Random rnd = new Random();
-        int sizes[] = new int[] { 100, 200, 400,800,1600,3200 };
+        int sizes[] = new int[] { 32,64,128,256,512,1024 };
         long minimumLookUp[] = new long[sizes.length];
         long minimumBinary[] = new long[sizes.length];
         for (int i = 0; i < minimumLookUp.length; i++) {
@@ -73,14 +56,11 @@ public class App {
                 if (minimumBinary[h] > t1) {
                     minimumBinary[h] = t1;
                 }
-
-                int value[] = new int[sizes[h]];
-                for (int j = 0; j < value.length; j++) {
-                    value[j] = rnd.nextInt(value.length * 10 + 1);
-                }
+                
                 BinaryTree tree = new BinaryTree();
-                for (int j = 0; j < value.length; j++) {
-                    tree.add2(value[j], value[j]);
+                for (int j = 0; j < array.length; j++) {
+                    int i = rnd.nextInt(array.length-1);
+                    tree.add2(array[i], array[i]);
                 }
 
                 t0 = System.nanoTime();

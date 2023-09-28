@@ -27,12 +27,15 @@ public class TreeIterator implements Iterator<Integer> {
     public Integer next() {
 
         if (stack.empty() == false) {
+
             next = stack.pop();
             Integer Integer = next.getValue();
+
             if (next.getRightBinaryNode() != null) {
                 next = next.getRightBinaryNode();
                 stack.push(next);
                 while (next.getLeftBinaryNode() != null) {
+
                     next = next.getLeftBinaryNode();
                     stack.push(next);
                 }
