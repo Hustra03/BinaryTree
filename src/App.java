@@ -3,7 +3,7 @@ import java.util.Random;
 public class App {
     public static void main(String[] args) throws Exception {
          BinaryTreeTest();
-       // BinaryTreeLookUpBenchmark();
+        //BinaryTreeLookUpBenchmark();
     }
 
     public static void BinaryTreeTest() {
