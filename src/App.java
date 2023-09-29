@@ -2,8 +2,8 @@ import java.util.Random;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        // BinaryTreeTest();
-        BinaryTreeLookUpBenchmark();
+         BinaryTreeTest();
+       // BinaryTreeLookUpBenchmark();
     }
 
     public static void BinaryTreeTest() {
